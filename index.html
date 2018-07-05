@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+  <div id="app">
+    <span v-if="message">
+      鼠标悬停几秒钟查看此处动态绑定的提示信息！
+    </span>
+  </div>
+
+  <div id="app1">
+    <ol>
+      <li v-for="todo in todos">{{todo.text}}</li>
+    </ol>
+
+
+  </div>
+
+
+  <div id="app2">
+    <p>{{me}}</p>
+    <button v-on:click ="abc">button</button>
+  </div>
+  <div id="tttt" >
+  <p>{{xyz}}</p>
+    <input v-model="xyz"/>
+  </div>
+
+
+    <!-- built files will be auto injected -->
+  <script>
+
+
+    var tttt = new Vue({
+      el:"#tttt",
+      data:{xyz:''}
+    });
+
+
+
+
+
+    var x = new Vue({
+      el: '#app',
+      data: {
+        message:false
+      }
+    })
+    x.message = true;
+
+    var app1 = new Vue({
+      el:'#app1',
+      data:{
+        todos:[
+          {text:'aaaaaa'},
+          {text:'bbbb'},
+          {text:'cccc'},
+        ]
+      }
+    });
+    app1.todos.push({text:'tttttt'});
+
+
+    var app2 = new Vue({
+      el:'#app2',
+      data:{
+        me:'i am fine'
+      },
+      methods:{
+        abc:function () {
+          this.me = 'gjgjgjgjgjgj';
+        }
+      }
+    });
+  </script>
+  </body>
+</html>
